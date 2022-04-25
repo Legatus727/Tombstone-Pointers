@@ -6,7 +6,7 @@ public:
     
     // copy constructor
     MyPointer<T>(MyPointer<T>& param) { 
-        data = new T;
+        *data = new T;
         *data = param.*data;
     }
     
@@ -14,7 +14,7 @@ public:
     // The parameter for the bootstrapping constructor should always be
     // a call to operator new.
     MyPointer<T>(T* param){
-        data = new T;
+        *data = new T;
         *data = param; 
     }
     
@@ -35,9 +35,9 @@ public:
 
     // assignment
     MyPointer<T>& operator=(const MyPointer<T>& param) {
-        free this.data;
-        this.data = new T;
-        this.data = param.*data;
+        free(this);
+        this.*data = new T;
+        this.*data = param.*data;
     } 
     
     // delete pointed-at object
